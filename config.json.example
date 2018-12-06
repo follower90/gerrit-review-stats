@@ -1,0 +1,8 @@
+{
+	"url": "https://gerrit.example.com",
+	"cookie": "GerritAccount=qwerty123",
+	"team": [
+		"John Blackwell",
+		"Alex Moon"
+	]
+}
