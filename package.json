@@ -1,14 +1,15 @@
 {
   "name": "gerrit-review-stats",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.22.2",
     "node-fetch": "^2.3.0"
   }
 }

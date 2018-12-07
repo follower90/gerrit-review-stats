@@ -1,6 +1,15 @@
 {
 	"url": "https://gerrit.example.com",
 	"cookie": "GerritAccount=qwerty123",
+	"search_range": {
+		"value": 1,
+		"type": "days",
+		"gerrit_type": "d"
+	},
+	"projects": [
+		"ui/common",
+		"api/test"
+	],
 	"team": [
 		"John Blackwell",
 		"Alex Moon"
