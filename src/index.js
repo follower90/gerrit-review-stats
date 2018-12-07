@@ -47,14 +47,19 @@ const calculate_reviews = gerrit => {
 const fetch_gerrits = project => {
 
 	console.log(`Fetching gerrits for ${project}...`);
-	const url = `/changes/?q=project:${project}+-age:${settings.search_range.value}${settings.search_range.gerrit_type}`;
+
+	const age = `${settings.search_range.value}${settings.search_range.gerrit_type}`;
+	const url = `/changes/?q=project:${project}+-age:${age}`;
+
 	return request(url).then(response => {
 
-			console.log(`${response.length} gerrits found`);
+		console.log(`${response.length} gerrits found`);
 
-			return response
-				.map(gerrit => `/changes/${gerrit['id']}/detail`)
-				.reduce((p, gerrit) => p.then(() => request(gerrit).then(calculate_reviews)), Promise.resolve());
+		return response
+			.map(gerrit => `/changes/${gerrit['id']}/detail`)
+			.reduce((p, gerrit) => {
+				return p.then(() => request(gerrit).then(calculate_reviews));
+			}, Promise.resolve());
 	});
 };
 
