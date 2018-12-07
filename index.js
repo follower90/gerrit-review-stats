@@ -20,8 +20,17 @@ const fetch_data = endpoint => fetch(settings.url + endpoint , {
 const calc_reviews_for_gerrit = gerrit_details => gerrit_details['messages'].reduce((reviewed, message) => {
 	const author = message.author ? message.author.name : false
 	const text = message.message
-	if (settings.team.includes(author) && !reviewed[author] && (text.includes('comment') || text.includes('Code-Review'))) {
+	if (settings.team.includes(author) && !reviewed[author] && 
+		(text.includes('comment') || text.includes('Code-Review')) &&
+		author !== gerrit_details.owner.name) {
 		score[author] = score[author] ? (score[author] + 1) : 1
+
+		console.log({
+			author,
+			text,
+			gerrit: gerrit_details.subject,
+		})
+
 		reviewed[author] = true
 	}
 	return reviewed
