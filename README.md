@@ -1,4 +1,4 @@
-# Gerrit Review Stats v.1.0.3
+# Gerrit Review Stats v.1.0.4
 
 ### Features
 - Get reviews count with log of review messages
