@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Gerrit stats</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/bootstrap.min.css" />
+    </head>
+
+<body>
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Gerrit Stats</a>
+
+    <div class="col-sm-9 col-md-10">
+        <form action="/" method="post">
+            <input type="date" name="date_from" value="<%= date_from %>" />
+            <input type="date" name="date_to" value="<%= date_to %>" />
+            <input type="submit" />
+        </form>
+    </div>
+</nav>
+
+<br/>
+<br/>
+<br/>
+<main role="main">
+    <div class="col-md-12">

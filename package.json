@@ -1,15 +1,20 @@
 {
   "name": "gerrit-review-stats",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "import": "node src/import.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "moment": "^2.22.2",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "sqlite3": "^4.0.4"
   }
 }

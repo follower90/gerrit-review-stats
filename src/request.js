@@ -6,7 +6,7 @@ const request = endpoint => {
 	const params = {
 		credentials: 'include',
 		method: 'GET',
-		headers: { 'Cookie':  settings.cookie }
+		headers: { 'Cookie': settings.cookie },
 	};
 
 	return fetch(settings.url + endpoint, params)
