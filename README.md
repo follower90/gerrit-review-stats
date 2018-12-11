@@ -5,6 +5,10 @@
 - Filter by group of team members and multiple projects
 - Filter by date in UI
 
+### Web interface
+
+![alt text](screenshot.jpg)
+
 ### Set-up and run
 - Setup your config.json from example (you should copy cookie from your browser)
 - Run npm install
