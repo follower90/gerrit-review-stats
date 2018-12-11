@@ -3,8 +3,7 @@
 	"cookie": "GerritAccount=qwerty123",
 	"search_range": {
 		"value": 1,
-		"type": "days",
-		"gerrit_type": "d"
+		"type": "d"
 	},
 	"projects": [
 		"ui/common",

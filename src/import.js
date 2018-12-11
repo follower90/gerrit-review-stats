@@ -30,7 +30,7 @@ const fetch_gerrits = project => {
 
     console.log(`Importing gerrits for ${project}...`);
 
-    const age = `${settings.search_range.value}${settings.search_range.gerrit_type}`;
+    const age = `${settings.search_range.value}${settings.search_range.type}`;
     const url = `/changes/?q=project:${project}+-age:${age}+limit:999999`;
 
     return request(url).then(response => {
