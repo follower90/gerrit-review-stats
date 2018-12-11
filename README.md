@@ -14,4 +14,3 @@
 - Run npm install
 - Run `npm run import` to import in local SQLite (it will create db.sql file)
 - Run `npm start` to run review statistics on localhost:3333
-- Wait and get result from console
