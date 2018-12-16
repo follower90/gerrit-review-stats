@@ -1,20 +1,16 @@
-const db = require('./../db');
+const Sequelize = require('sequelize');
+const sequelize = require('./../sequelize');
 
-const create = gerrit => {
+const Gerrit = sequelize.define('gerrit', {
+    id: { type: Sequelize.STRING, primaryKey: true },
+    branch: Sequelize.STRING,
+    change_id: Sequelize.STRING,
+    status: Sequelize.STRING,
+    author: Sequelize.STRING,
+    subject: Sequelize.STRING,
+    project: Sequelize.STRING,
+    created: Sequelize.DATE,
+    updated: Sequelize.DATE,
+});
 
-    if (!gerrit.owner) return Promise.resolve();
-
-    return db.import_gerrit({
-        id: gerrit.id,
-        branch: gerrit.branch,
-        change_id: gerrit.change_id,
-        status: gerrit.status,
-        author: gerrit.owner._account_id,
-        subject: gerrit.subject,
-        project: gerrit.project,
-        created: gerrit.created,
-        updated: gerrit.updated,
-    });
-};
-
-module.exports.create = create;
+module.exports = Gerrit;

@@ -23,6 +23,7 @@ const index = (req, res) => {
                    return res.render('index', {
                        stats,
                        reviews,
+                       url: settings.url,
                        date_from: from.format(constants.PICKER_DATE_FORMAT),
                        date_to: to.format(constants.PICKER_DATE_FORMAT),
                        projects: settings.projects,

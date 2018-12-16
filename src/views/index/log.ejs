@@ -1,0 +1,26 @@
+<h2>Reviews Log</h2>
+<br/>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Project</th>
+        <th>Subject</th>
+        <th>Message</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% reviews.forEach(row => { %>
+        <tr class="log-table-row">
+            <td><%= row.date %></td>
+            <td><%= row.name %></td>
+            <td><%= row.project %></td>
+            <td><a target="_blank" href="<%= url %>/#q,<%= row.change_id %>,n,z"><%= row.subject %></a></td>
+            <td><%= row.message %></td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>

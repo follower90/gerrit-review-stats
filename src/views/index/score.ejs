@@ -1,0 +1,34 @@
+<h2>Reviews Score</h2>
+
+
+<br/>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th width="20">#</th>
+        <th>Name</th>
+        <th>Total</th>
+
+        <% projects.forEach(project => { %>
+            <th><%= project %></th>
+        <% }) %>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% stats.forEach((row, idx) => { %>
+        <tr class="score-table-row">
+            <td><%= idx+1 %></td>
+            <td><%= row.name %></td>
+            <td><strong><%= row.count %></strong></td>
+            <% projects.forEach(project => { %>
+                <td><%= row['projects'][project] || 0 %></td>
+            <% }) %>
+        </tr>
+
+    <% }); %>
+    </tbody>
+</table>
+
+<br/>

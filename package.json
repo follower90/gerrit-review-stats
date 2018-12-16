@@ -1,6 +1,6 @@
 {
   "name": "gerrit-review-stats",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "node-fetch": "^2.3.0",
+    "sequelize": "^4.42.0",
     "sqlite3": "^4.0.4"
   }
 }

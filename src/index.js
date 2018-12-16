@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const sequalize = require('./sequelize');
+
 const indexController = require('./controllers/index');
 
 const app = express();
@@ -18,4 +20,4 @@ app.set('views', __dirname + '/views');
 app.get('/', indexController.index);
 app.post('/', indexController.index);
 
-app.listen(3333);
+sequalize.sync().then(() => app.listen(3333));

@@ -1,28 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Gerrit stats</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="/bootstrap.min.css" />
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<body>
+    <title>Gerrit Stats</title>
 
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Gerrit Stats</a>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
 
-    <div class="col-sm-9 col-md-10">
-        <form action="/" method="post">
-            <input type="date" name="date_from" value="<%= date_from %>" />
-            <input type="date" name="date_to" value="<%= date_to %>" />
-            <input type="submit" />
-        </form>
-    </div>
+<body id="page-top">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <a class="navbar-brand mr-1" href="/">Gerrit Stats</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <form action="/" method="post" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 fro">
+        <div class="form-inline">
+            <div class="input-group col-md-5">
+                <input class="form-control" type="date" name="date_from" value="<%= date_from %>" />
+            </div>
+            <div class="input-group col-md-5">
+                <input class="form-control" type="date" name="date_to" value="<%= date_to %>" />
+            </div>
+            <div class="input-group col-md-2">
+                <input class="form-control" type="submit" value="OK" />
+            </div>
+        </div>
+    </form>
+
 </nav>
 
-<br/>
-<br/>
-<br/>
-<main role="main">
-    <div class="col-md-12">
+<div id="wrapper">
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active"><%= date_from %> - <%= date_to %></li>
+            </ol>

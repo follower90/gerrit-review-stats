@@ -1,15 +1,12 @@
-const db = require('./../db');
+const Sequelize = require('sequelize');
 
-const create = user => {
+const sequelize = require('./../sequelize');
 
-    if (!user) return Promise.resolve();
+const user = sequelize.define('user', {
+    id: { type: Sequelize.STRING, primaryKey: true },
+    name: Sequelize.STRING,
+    email: Sequelize.STRING,
+    username: Sequelize.STRING,
+});
 
-    return db.import_user({
-        id: user._account_id,
-        name: user.name,
-        email: user.email,
-        username: user.username,
-    });
-};
-
-module.exports.create = create;
+module.exports = user;
