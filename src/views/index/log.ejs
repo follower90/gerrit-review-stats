@@ -6,9 +6,9 @@
     <tr>
         <th>Date</th>
         <th>Name</th>
-        <th>Project</th>
-        <th>Subject</th>
-        <th>Message</th>
+        <th class="bs-only">Project</th>
+        <th class="bs-only">Subject</th>
+        <th class="ms-bs-only">Message</th>
     </tr>
     </thead>
 
@@ -17,9 +17,9 @@
         <tr class="log-table-row">
             <td><%= row.date %></td>
             <td><%= row.name %></td>
-            <td><%= row.project %></td>
-            <td><a target="_blank" href="<%= url %>/#q,<%= row.change_id %>,n,z"><%= row.subject %></a></td>
-            <td><%= row.message %></td>
+            <td class="bs-only"><%= row.project %></td>
+            <td class="bs-only"><a target="_blank" href="<%= url %>/#q,<%= row.change_id %>,n,z"><%= row.subject %></a></td>
+            <td class="ms-bs-only"><%= row.message %></td>
         </tr>
     <% }); %>
     </tbody>

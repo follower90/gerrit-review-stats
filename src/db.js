@@ -13,7 +13,7 @@ const get_user_stats = (date_from, date_to, team, resolve) => {
             where: {
                 date: { [Op.between]: [date_from, date_to] },
                 message: { [Op.like]: '%: Code-Review%' },
-                author: { [Op.in]: users.map(i => i.id) }
+                author: { [Op.in]: users.map(i => i.id), [Op.not]: Sequelize.col('parent.author') },
             },
             include: [
                 { model: Gerrit, as: 'parent' },
@@ -55,6 +55,7 @@ const get_reviews_data = (date_from, date_to, team, resolve) => {
         where: {
             date: { [Op.between]: [date_from, date_to] },
             message: { [Op.like]: '%: Code-Review%' },
+            author: { [Op.not]: Sequelize.col('parent.author') },
         },
         include: [
             { model: Gerrit, as: 'parent' },

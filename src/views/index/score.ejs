@@ -11,7 +11,7 @@
         <th>Total</th>
 
         <% projects.forEach(project => { %>
-            <th><%= project %></th>
+            <th class="bs-only"><%= project %></th>
         <% }) %>
     </tr>
     </thead>
@@ -23,7 +23,7 @@
             <td><%= row.name %></td>
             <td><strong><%= row.count %></strong></td>
             <% projects.forEach(project => { %>
-                <td><%= row['projects'][project] || 0 %></td>
+                <td class="bs-only"><%= row['projects'][project] || 0 %></td>
             <% }) %>
         </tr>
 

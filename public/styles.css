@@ -344,7 +344,6 @@ footer.sticky-footer {
     bottom: 0;
     width: calc(100% - 90px);
     height: 80px;
-    background-color: #e9ecef;
 }
 
 footer.sticky-footer .copyright {
@@ -364,4 +363,20 @@ footer.sticky-footer {
     font-size: 12px;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.table {
+    max-width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .table .bs-only {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .table .ms-bs-only {
+        display: none;
+    }
 }

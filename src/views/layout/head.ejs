@@ -16,25 +16,26 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="/">Gerrit Stats</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-    </button>
+        <a class="navbar-brand mr-1" href="/">Gerrit Stats</a>
 
-    <form action="/" method="post" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 fro">
-        <div class="form-inline">
-            <div class="input-group col-md-5">
-                <input class="form-control" type="date" name="date_from" value="<%= date_from %>" />
+        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <form action="/" method="post" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 fro">
+            <div class="form-inline">
+                <div class="input-group col-md-5">
+                    <input class="form-control" type="date" name="date_from" value="<%= date_from %>" />
+                </div>
+                <div class="input-group col-md-5">
+                    <input class="form-control" type="date" name="date_to" value="<%= date_to %>" />
+                </div>
+                <div class="input-group col-md-2">
+                    <button class="form-control btn" type="submit">OK</button>
+                </div>
             </div>
-            <div class="input-group col-md-5">
-                <input class="form-control" type="date" name="date_to" value="<%= date_to %>" />
-            </div>
-            <div class="input-group col-md-2">
-                <input class="form-control" type="submit" value="OK" />
-            </div>
-        </div>
-    </form>
+        </form>
 
 </nav>
 
@@ -42,9 +43,8 @@
 
     <div id="content-wrapper">
 
-        <div class="container-fluid">
+        <div class="container">
 
-            <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.html">Dashboard</a>
