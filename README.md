@@ -1,4 +1,4 @@
-# Gerrit Review Stats v.1.0.5
+# Gerrit Review Stats v.1.0.6
 
 ### Features
 - Get reviews count with log of review messages
@@ -11,10 +11,16 @@
 
 ### Set-up and run
 - Setup your config.json from example (you should copy cookie from your browser)
-- Run `npm run import` to import in local SQLite (it will create db.sql file)
-- Run `npm start` to run review statistics on localhost:3333
+- Run `yarn run import` to import in local SQLite (it will create db.sql file)
+- Run `yarn start` to run review statistics on localhost:3333
 
 ### Changelog
+
+##### 1.0.6
+
+- Minor template updated and favicon added
+- Update to not calculate self +1
+- Use yarn as package manager
 
 ##### 1.0.5
 
