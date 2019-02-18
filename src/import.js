@@ -16,8 +16,8 @@ const LIMIT_QUERY = 999999;
 const getListEndpointUrl = project => `/changes/?q=project:${project}+-age:${AGE_QUERY}+limit:${LIMIT_QUERY}`;
 const getDetailsEndpointUrl = id => `/changes/${id}/detail`;
 
-const importReview = (message, gerrit_id) => {
-    if (!message.author) return Promise.resolve();
+const importReview = async (message, gerrit_id) => {
+    if (!message.author) return;
 
     const data = {
         id: message.id,
@@ -28,13 +28,12 @@ const importReview = (message, gerrit_id) => {
         gerrit: gerrit_id,
     };
 
-    return Review.findByPk(data.id).then(review => {
-        return review ? Promise.resolve() : Review.create(data);
-    });
+    const review = await Review.findByPk(data.id);
+    if (!review) await Review.create(data);
 };
 
-const importUser = user => {
-    if (!user) return Promise.resolve();
+const importUser = async user => {
+    if (!user) return;
 
     const data = {
         id: user._account_id,
@@ -43,13 +42,12 @@ const importUser = user => {
         username: user.username,
     };
 
-    return User.findByPk(data.id).then(user => {
-        return user ? Promise.resolve() : User.create(data);
-    });
+    const userDb = await User.findByPk(data.id);
+    if (!userDb) await User.create(data);
 };
 
-const importGerrit = gerrit => {
-    if (!gerrit.owner) return Promise.resolve();
+const importGerrit = async gerrit => {
+    if (!gerrit.owner) return;
 
     const data = {
         id: gerrit.id,
@@ -63,43 +61,44 @@ const importGerrit = gerrit => {
         updated: gerrit.updated,
     };
 
-    return Gerrit.findByPk(data.id).then(gerrit => {
-        if (gerrit) {
-            return gerrit.update({ status: gerrit.status, subject: gerrit.subject, updated: gerrit.updated });
-        } else {
-            return Gerrit.create(data);
-        }
-    });
+    const gerritDb = await Gerrit.findByPk(data.id);
+    if (gerritDb) {
+        await gerritDb.update({ status: gerrit.status, subject: gerrit.subject, updated: gerrit.updated });
+    } else {
+        await Gerrit.create(data);
+    }
 };
 
-const isGerritUptoDate = (id, updated) => {
-    return new Promise(resolve => {
-        Gerrit.findByPk(id).then(gerrit => {
-            resolve(gerrit && moment(gerrit.updated).utc().isSame(moment(updated).utc()));
-        });
-    });
+const isGerritUptoDate = async (id, updated) => {
+    const gerrit = await Gerrit.findByPk(id);
+    return gerrit && moment(gerrit.updated).utc().isSame(moment(updated).utc());
 };
 
-const importDetails = id =>
-    request(getDetailsEndpointUrl(id))
-    .then(gerrit => {
-        return importGerrit(gerrit).then(() => gerrit.messages.reduce((p, message) => p.then(() =>
-            importUser(message.author).then(() => importReview(message, gerrit.id))),
-            Promise.resolve()))
-        }
-    );
+const importDetails = async id => {
+    const gerrit = await request(getDetailsEndpointUrl(id));
+    await importGerrit(gerrit);
 
-const updateGerrit = gerrit => isGerritUptoDate(gerrit.id, gerrit.updated)
-    .then(updated => updated ? Promise.resolve() : importDetails(gerrit.id));
-
-const fetchForProject = project => {
-    console.log(`Importing gerrits for ${project}...`);
-    return request(getListEndpointUrl(project)).then(response => {
-        console.log(`${response.length} gerrits found`);
-        return response.reduce((p, gerrit) => p.then(() => updateGerrit(gerrit)), Promise.resolve());
-    });
+    for (const message of gerrit.messages) {
+        await importUser(message.author);
+        await importReview(message, gerrit.id);
+    }
 };
 
-const fetchAll = projects => projects.reduce((p, project) => p.then(() => fetchForProject(project)), Promise.resolve());
+const updateGerrit = async gerrit => {
+    const updated = await isGerritUptoDate(gerrit.id, gerrit.updated);
+    if (!updated) await importDetails(gerrit.id);
+};
 
-fetchAll(settings.projects).then(() => console.log('Importing finished'));
+const fetchForProject = async project => {
+    console.log(`Importing gerrits for ${project}`);
+    const response = await request(getListEndpointUrl(project));
+    console.log(`${response.length} gerrits found`);
+
+    for (const gerrit of response) await updateGerrit(gerrit);
+};
+
+const fetchAll = async projects => {
+    for (const project of projects) await fetchForProject(project);
+};
+
+fetchAll(settings.projects);

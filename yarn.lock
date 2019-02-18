@@ -934,6 +934,11 @@ rimraf@^2.6.1:
   dependencies:
     glob "^7.0.5"
 
+route-async@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/route-async/-/route-async-1.0.2.tgz#c67b67c5e07f9674c908fc202889e31724b77ba8"
+  integrity sha512-WGArAyO9ynrYBbovg8NAmg7qYRmWfBleMH6RF71fG+H2z8ZxFRNKgrkSfDTj125n/+d9rEZRigGBJV2K/9AxlA==
+
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"

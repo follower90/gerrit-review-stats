@@ -1,4 +1,4 @@
-# Gerrit Review Stats v.1.0.6
+# Gerrit Review Stats v.1.0.7
 
 ### Features
 - Get reviews count with log of review messages
@@ -15,6 +15,10 @@
 - Run `yarn start` to run review statistics on localhost:3333
 
 ### Changelog
+
+##### 1.0.7
+
+- Improved code readability with async/await
 
 ##### 1.0.6
 
