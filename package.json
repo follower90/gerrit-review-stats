@@ -16,7 +16,7 @@
     "moment": "^2.22.2",
     "node-fetch": "^2.3.0",
     "route-async": "^1.0.2",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sqlite3": "^4.0.4"
   }
 }
